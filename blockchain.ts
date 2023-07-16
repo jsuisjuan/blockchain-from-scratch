@@ -1,3 +1,4 @@
+import { stringify } from "querystring";
 import { hash, hashValidado } from "./helpers";
 
 export interface Bloco {
@@ -36,6 +37,10 @@ export class Blockchain {
             },
             payload
         }; 
+    }
+
+    get chain():Bloco[] {
+        return this.#chain;
     }
 
     private get ultimoBloco(): Bloco {
@@ -88,5 +93,25 @@ export class Blockchain {
         }
     }
         
-    enviarBloco(bloco: Bloco): Bloco[] {}
+    enviarBloco(bloco: Bloco): Bloco[] {
+        if(this.verificarBloco(bloco)) {
+            this.#chain.push(bloco);
+            console.log(`Bloco #${bloco.payload.sequencia} foi adicionado a blockchain: ${JSON.stringify(bloco, null, 2)}`);
+        }
+        return this.#chain;
+    }
+
+    verificarBloco(bloco: Bloco): boolean {
+        if(bloco.payload.hashAnterior !== this.hashUltimoBloco()) {
+            console.error(`Bloco #${bloco.payload.sequencia} invalido: O hash anterior é ${this.hashUltimoBloco().slice(0, 12)} e não ${bloco.payload.hashAnterior.slice(0, 12)}`);
+            return false;
+        }
+
+        const hashTeste: string = hash(hash(JSON.stringify(bloco.payload)) + bloco.header.nonce);
+        if(!hashValidado({hash: hashTeste, dificuldade: this.dificuldade, prefixo: this.prefixoPow})) {
+            console.error(`Bloco #${bloco.payload.sequencia} invalido: Nonce ${bloco.header.nonce} é invalido e não pode ser verificado`);
+            return false;
+        }
+        return true;
+    }
 }
