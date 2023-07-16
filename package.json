@@ -2,5 +2,22 @@
   "devDependencies": {
     "@types/node": "^20.4.1",
     "typescript": "^5.1.6"
-  }
+  },
+  "name": "blockchain-from-scratch",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsuisjuan/blockchain-from-scratch.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jsuisjuan/blockchain-from-scratch/issues"
+  },
+  "homepage": "https://github.com/jsuisjuan/blockchain-from-scratch#readme",
+  "description": ""
 }

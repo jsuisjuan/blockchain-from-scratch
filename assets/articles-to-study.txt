@@ -1,0 +1,23 @@
+→ Sherman, Alan T.; Javani, Farid; Zhang, Haibin; Golaszewski, Enis (January 2019). On the Origins and Variations of Blockchain Technologies
+https://arxiv.org/abs/1810.06130
+
+→ Bayer, Dave; Haber, Stuart; Stornetta, W. Scott (March 1992). Improving the Efficiency and Reliability of Digital Time-Stamping
+https://citeseerx.ist.psu.edu/viewdoc...
+
+→ Sobre Ralph Merkle
+https://en.wikipedia.org/wiki/Ralph_M...
+
+→Sobre David Chaum
+https://en.wikipedia.org/wiki/David_C...
+
+→ Nakamoto S. (2008). - Bitcoin: A Peer-to-Peer Electronic Cash System
+https://bitcoin.org/files/bitcoin-pap...
+
+→ HashCash proposto pela primeira vez em 1997 por Adam Back
+http://www.hashcash.org/papers/announ...
+
+→ Back A. (August 2002). Hashcash - A Denial of Service Counter-Measure
+http://www.hashcash.org/papers/hashca...
+
+→ Dwork C., Naor M. (1993) Pricing via Processing or Combatting Junk Mail. In: Brickell E.F. (eds) Advances in Cryptology — CRYPTO’ 92. CRYPTO 1992. Lecture Notes in Computer Science, vol 740. Springer, Berlin, Heidelberg.
+https://link.springer.com/chapter/10....

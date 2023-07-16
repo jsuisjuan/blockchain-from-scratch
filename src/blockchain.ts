@@ -1,4 +1,3 @@
-import { stringify } from "querystring";
 import { hash, hashValidado } from "./helpers";
 
 export interface Bloco {
