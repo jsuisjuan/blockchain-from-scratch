@@ -1,4 +1,4 @@
-import { hash } from "./helpers";
+import { hash, hashValidado } from "./helpers";
 
 export interface Bloco {
     header: {
@@ -35,7 +35,7 @@ export class Blockchain {
                 hashBloco: hash(JSON.stringify(payload))
             },
             payload
-        } 
+        }; 
     }
 
     private get ultimoBloco(): Bloco {
@@ -57,4 +57,36 @@ export class Blockchain {
         console.log(`Bloco #${novoBloco.sequencia} criado: ${JSON.stringify(novoBloco)}`);
         return novoBloco;
     }
+
+    minerarBloco(bloco: Bloco['payload']) {
+        let nonce: number = 0;
+        let inicio: number = +new Date();
+
+        while(true) {
+            const hashBloco: string = hash(JSON.stringify(bloco));
+            const hashPow: string = hash(hashBloco + nonce);
+
+            if (hashValidado({hash: hashPow, dificuldade: this.dificuldade, prefixo: this.prefixoPow})) {
+                const final: number = +new Date();
+                const hashReduzido: string = hashBloco.slice(0, 12);
+                const tempoMineracao: number = (final - inicio) / 1000;
+
+                console.log(`Bloco #${bloco.sequencia} minerado em ${tempoMineracao}s. Hash ${hashReduzido} (${nonce} tentativas)`);
+
+                return {
+                    blocoMinerado: {
+                        payload: {...bloco},
+                        header: {
+                            nonce,
+                            hashBloco
+                        }
+                    }
+                };
+            }
+
+            nonce++;
+        }
+    }
+        
+    enviarBloco(bloco: Bloco): Bloco[] {}
 }
