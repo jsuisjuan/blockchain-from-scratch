@@ -1,0 +1,3 @@
+**TIMESTAMP
+- timestamping is a method to prove to someone that some document was created in a specific time and it wasnt 
+changed since then.

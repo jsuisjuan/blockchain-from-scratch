@@ -1,13 +1,21 @@
-import { Blockchain } from "./blockchain";
+/*
+* NAME: Blockchain from scratch
+*
+* AUTHOR   : Juan Carvalho Silva de Lima
+* DATE     : 07/16/2023
+* See https: https://www.youtube.com/watch?v=ztQEaQ06GYs&list=WL&index=1
+*/
 
-const dificuldade = Number(process.argv[2]) || 4;
-const blockchain = new Blockchain(dificuldade);
+import { Blockchain, Bloco } from "./blockchain";          // importing Blockchain class from ./blockchain
 
-const numeroBlocos = Number(process.argv[3]) || 10;
-let chain = blockchain.chain
+const difficulty = Number(process.argv[2]) || 4;           // difficulty to mine a block
+const blockchain = new Blockchain(difficulty);
 
-for (let i = 1; i <= numeroBlocos; i++) {
-    const bloco = blockchain.criarBloco(`Bloco ${i}`);
+const numberBlocks = Number(process.argv[3]) || 10;        // number of block to be created inside the blockchain
+let chain: Bloco[] = blockchain.chain                      // pushing the chain of blocks
+
+for (let i: number = 1; i <= numberBlocks; i++) {
+    const bloco = blockchain.criarBloco(`Bloco ${i}`);      // creating the block pushing the data that ll be stored
     const mineInfo = blockchain.minerarBloco(bloco);
     chain = blockchain.enviarBloco(mineInfo.blocoMinerado);
 }
